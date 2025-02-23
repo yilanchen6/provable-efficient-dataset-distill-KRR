@@ -452,7 +452,7 @@ pre {
 
 
         <div class="affil-row">
-            <div class="venue text-center"><b>ICLR 2024</b></div>
+            <div class="venue text-center"><b>NeurIPS 2024</b></div>
         </div>
 
         </center>
@@ -489,17 +489,21 @@ pre {
             <p class="maintext">
                 In this paper, by focusing on dataset distillation for kernel ridge
                 regression (KRR), we show that one data point per class is already necessary and
-                sufficient to recover the original model’s performance in many settings. For linear
-                ridge regression and KRR with surjective feature mappings, we provide necessary
-                and sufficient conditions for the distilled dataset to recover the original model’s
-                parameters. For KRR with injective feature mappings of deep neural networks, we
-                show that while one data point per class is not sufficient in general, k+1 data points
-                can be sufficient for deep linear neural networks, where k is the number of classes.
-                Our theoretical results enable directly constructing analytical solutions for distilled
-                datasets, resulting in a provable and efficient dataset distillation algorithm for KRR.
-                We verify our theory experimentally and show that our algorithm outperforms
-                previous work such as KIP while being significantly more efficient, e.g. 15840×
-                faster on CIFAR-100.</p>
+                sufficient to recover the original model’s performance in many settings. 
+                <ul>
+                    <li>For linear ridge regression and KRR with surjective feature mappings, we provide necessary
+                        and sufficient conditions for the distilled dataset to recover the original model’s
+                        parameters.</li>
+                    <li>For KRR with injective feature mappings of deep neural networks, we
+                        show that while one data point per class is not sufficient in general, k+1 data points
+                        can be sufficient for deep linear neural networks, where k is the number of classes.</li>
+                    <li>Our theoretical results enable directly constructing analytical solutions for distilled
+                        datasets, resulting in a provable and efficient dataset distillation algorithm for KRR.
+                        We verify our theory experimentally and show that our algorithm outperforms
+                        previous work such as KIP while being significantly more efficient, e.g. 15840×
+                        faster on CIFAR-100.</li>
+                  </ul>
+            </p>
         </div>
     </section>
     <section id="Overview">
@@ -517,8 +521,8 @@ pre {
         <h2>What is Conformal Prediction (CP)</h2>
             
             <div class="mx-auto">
-                <center><img class="card-img-top" src="assets/CP_example.PNG"></center>
-                <center><p class="caption">An example of conformal prediction from <a href="#Ref1">[1]</a></p></center>
+                <center><img class="card-img-top" src="assets/data_distill.png"></center>
+                <center><p class="caption">An illustration of dataset distillation from <a href="#Ref1">[1]</a></p></center>
             </div>
             <br>
             <div class="flex-row">
@@ -676,9 +680,9 @@ pre {
         <hr>
         <h2>Related works</h2>
         <p class="maintext">
-        [1] Angelopoulos, Anastasios Nikolas, Stephen Bates, Michael Jordan, and Jitendra Malik.
-        <a id="Ref1" href="https://arxiv.org/abs/2009.14193">"Uncertainty Sets for Image Classifiers using Conformal Prediction."</a>
-        In International Conference on Learning Representations. 2020.
+        [1] Tongzhou Wang, Jun-Yan Zhu, Antonio Torralba, Alexei A. Efros.
+        <a id="Ref1" href="https://arxiv.org/pdf/1811.10959">"Dataset Distillation."</a>
+        2020.
         <br>
         [2] Gendler, Asaf, Tsui-Wei Weng, Luca Daniel, and Yaniv Romano.
         <a id="Ref2" href="https://openreview.net/forum?id=9L1BsI4wP1H">"Adversarially robust conformal prediction."</a>
@@ -691,19 +695,19 @@ pre {
     <section class="maintext">
         <hr>
         <h2>Cite this work</h2>
-        G. Yan, Y. Romano and T.-W. Weng, <a href="https://openreview.net/pdf?id=BWAhEjXjeG">
-            <b>Provably Robust Conformal Prediction with Improved Efficiency</b>
-        </a>, ICLR 2024.
+        Yilan Chen, Wei Huang, Tsui-Wei Weng, <a href="https://openreview.net/pdf?id=BWAhEjXjeG">
+            <b>Provable and Efficient Dataset Distillation for Kernel Ridge Regression</b>
+        </a>, NeurIPS 2024.
         <pre>
             <code>
-@inproceedings{
-    yan2024provably,
-    title={Provably Robust Conformal Prediction with Improved Efficiency},
-    author={Ge Yan and Yaniv Romano and Tsui-Wei Weng},
-    booktitle={The Twelfth International Conference on Learning Representations},
-    year={2024},
-    url={https://openreview.net/forum?id=BWAhEjXjeG}
-    }
+                @inproceedings{
+                    chen2024provable,
+                    title={Provable and Efficient Dataset Distillation for Kernel Ridge Regression},
+                    author={Yilan Chen and Wei Huang and Tsui-Wei Weng},
+                    booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems},
+                    year={2024},
+                    url={https://openreview.net/forum?id=WI2VpcBdnd}
+                    }
             </code>
         </pre>
     </section>

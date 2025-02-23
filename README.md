@@ -1,1 +1,1 @@
-# Provably Robust Conformal Prediction with Improved efficiency
+# Provable and Efficient Dataset Distillation for Kernel Ridge Regressioncy

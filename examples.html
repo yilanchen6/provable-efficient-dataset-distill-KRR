@@ -1,0 +1,699 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<script src="bootstrap.js"></script>
+<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style type="text/css">
+body {
+    font-family: "Titillium Web", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 980px){
+    body {
+        width: 980px;
+    }
+}
+
+h1 {
+    font-weight:300;
+    line-height: 1.15em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+a:link,a:visited {
+    color: #5364cc;
+    text-decoration: none;
+}
+a:hover {
+    color: #208799;
+}
+h1 {
+    text-align: center;
+}
+h2,h3 {
+    text-align: left;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 500;
+}
+h2 {
+    font-weight: 400;
+    margin: 16px 0px 4px 0px;
+}
+h3 {
+    font-weight: 600;
+    margin: 16px 0px 4px 0px;
+}
+
+.paper-title {
+    padding: 1px 0px 1px 0px;
+}
+section {
+    margin: 32px 0px 32px 0px;
+    text-align: justify;
+    clear: both;
+}
+.col-5 {
+     width: 20%;
+     float: left;
+}
+.col-4 {
+     width: 25%;
+     float: left;
+}
+.col-3 {
+     width: 33%;
+     float: left;
+}
+.col-2 {
+     width: 50%;
+     float: left;
+}
+.col-1 {
+     width: 100%;
+     float: left;
+}
+
+.author-row, .affil-row {
+    font-size: 26px;
+}
+
+.author-row-new { 
+    text-align: center; 
+}
+
+.author-row-new a {
+    display: inline-block;
+    font-size: 20px;
+    padding: 4px;
+}
+
+.author-row-new sup {
+    color: #313436;
+    font-size: 12px;
+}
+
+.affiliations-new {
+    font-size: 18px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.row {
+    margin: 16px 0px 16px 0px;
+}
+.authors {
+    font-size: 26px;
+}
+.affiliatons {
+    font-size: 18px;
+}
+.affil-row {
+    margin-top: 18px;
+}
+.teaser {
+    max-width: 100%;
+}
+.text-center {
+    text-align: center;  
+}
+.screenshot {
+    width: 256px;
+    border: 1px solid #ddd;
+}
+.screenshot-el {
+    margin-bottom: 16px;
+}
+hr {
+    height: 1px;
+    border: 0; 
+    border-top: 1px solid #ddd;
+    margin: 0;
+}
+.material-icons {
+    vertical-align: -6px;
+}
+p {
+    line-height: 1.25em;
+}
+.caption {
+    font-size: 16px;
+    color: #666;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+
+video {
+    display: block;
+    margin: auto;
+}
+
+
+figure {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#bibtex pre {
+    font-size: 14px;
+    background-color: #eee;
+    padding: 16px;
+}
+.blue {
+    color: #2c82c9;
+    font-weight: bold;
+}
+.orange {
+    color: #d35400;
+    font-weight: bold;
+}
+.flex-row {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.paper-btn-coming-soon {
+    position: relative; 
+    top: 0;
+    left: 0;
+}
+
+.coming-soon {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+
+.paper-btn {
+  position: relative;
+  text-align: center;
+
+  display: inline-block;
+  margin: 8px;
+  padding: 8px 8px;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  
+  background-color: #5364cc;
+  color: white !important;
+  font-size: 20px;
+  width: 100px;
+  font-weight: 600;
+}
+.paper-btn-parent {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0px;
+}
+
+.paper-btn:hover {
+    opacity: 0.85;
+}
+
+.example-btn {
+  position: relative;
+  text-align: center;
+
+  display: inline-block;
+  margin: 8px;
+  padding: 8px 8px;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  
+  background-color: #4cd468;
+  color: white !important;
+  font-size: 20px;
+  width: 140px;
+  font-weight: 600;
+}
+.example-btn-parent {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0px;
+}
+
+.example-btn:hover {
+    opacity: 0.85;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.venue {
+    font-size: 23px;
+}
+
+.topnav {
+    background-color: #EEEEEE;
+    overflow: hidden;
+}
+
+.topnav div {
+    max-width: 1070px;
+    margin: 0 auto;
+}
+
+.topnav a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+    padding: 16px 16px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.topnav img {
+    padding: 2px 0px;
+    width: 100%;
+    margin: 0.2em 0px 0.3em 0px;
+    vertical-align: middle;
+}
+
+pre {
+    font-size: 0.9em;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 3px;
+    background-color: rgb(235, 235, 235);
+    overflow-x: auto;
+}
+
+.download-thumb {
+    display: flex;
+}
+
+@media only screen and (max-width: 620px) {
+    .download-thumb {
+        display: none;
+    }
+}
+
+.paper-stuff {
+    width: 50%;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 620px) {
+    .paper-stuff {
+        width: 100%;
+    }
+}
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  text-align: center;
+  float: left;
+  width: 16.666%;
+  padding: 5px;
+}
+.column3 {
+  text-align: center;
+  float: left;
+  width: 33.333%;
+  padding: 5px;
+}
+.column4 {
+  text-align: center;
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+.column5 {
+  text-align: center;
+  float: left;
+  width: 20%;
+  padding: 5px;
+}
+.border-right {
+    border-right: 1px solid black;
+}
+.border-bottom{
+    border-bottom: 1px solid black;
+}
+
+
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+.figure-img {
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+
+
+
+
+
+
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+
+
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+  .column {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .column3 {
+    width: 100%;
+  }
+}
+
+</style>
+<link rel="stylesheet" href="bootstrap-grid.css">
+
+<script type="text/javascript" src="../js/hidebib.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
+    <head>
+        <title>The Importance of Prompt Tuning for Automated Neuron Explanations</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:description" content="The Importance of Prompt Tuning for Automated Neuron Explanations"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    </head>
+
+ <body>
+
+
+<div class="container">
+    <div class="paper-title">
+    <h1> 
+        The Importance of Prompt Tuning for Automated Neuron Explanations
+    </div>
+
+    <div id="authors">
+        <center>
+            <div class="author-row-new">
+                <a href="https://lilywenglab.github.io/">Justin Lee*</a>,
+                <a href="https://tuomaso.github.io/">Tuomas Oikarinen*</a>,
+                <a href="https://lilywenglab.github.io/">Arjun Chatha</a>,
+                <a href="https://kengchichang.com/">Keng-Chi Chang</a>,
+                <a href="https://chenyilan.net/">Yilan Chen</a>,
+                <a href="https://lilywenglab.github.io/">Tsui-Wei (Lily) Weng</a>
+            </div>
+        </center>
+        <center>
+        <div class="affiliations">
+            <span> UCSD</span>
+        </div>
+
+        <br>*indicates equal contribution.
+
+        <div class="affil-row">
+            <div class="venue text-center"><b>NeurIPS ATTRIB 2023</b></div>
+        </div>
+
+        </center>
+        
+        <div style="clear: both">
+            <div class="paper-btn-parent">
+            <a class="paper-btn" href="https://arxiv.org/abs/2310.06200">
+                <span class="material-icons"> description </span> 
+                 Paper
+            </a>
+            <div class="paper-btn-coming-soon">
+                <a class="paper-btn" href="https://github.com/Trustworthy-ML-Lab/Efficient-LLM-automated-interpretability">
+                    <span class="material-icons"> code </span>
+                    Code
+                </a>
+            </div>
+        </div></div>
+        
+        <div style="clear: both">
+            <div class="example-btn-parent">
+            <a class="example-btn" href="./index.html">
+                <span class="material-icons"> keyboard_backspace </span> 
+                 Back
+            </a>
+        </div></div>
+    </div>
+    
+
+    <section id="GPT35example1">
+        <hr>
+        <h2>#1 GPT 3.5 - Layer 36, Neuron 818</h2>
+            
+            <div class="flex-row">
+                <div class="mx-auto">
+                    <left><p><b>Highly activating inputs:</b> </p></left>
+                    <center><img class="card-img-top" src="assets/examples/slide1.png" style="width:950px"></center>
+                    <left><p>
+                        <b>Original (1.4): </b>words related to financial markets and economic conditions.
+                        <br>
+                        <b>Summary (4.8): </b>prepositions, specifically the preposition "to".
+                        <br>
+                        <b>Highlight (4.0): </b>phrases with the word "to" followed by a verb.
+                        <br>
+                        <b>HS (4.8): </b>prepositions, specifically the word "to".
+                        <br>
+                        <b>AVHS (3.0): </b>phrases related to causality and connection between events or actions.
+                        </p></left>
+                </div>
+            </div>
+
+    </section>
+
+    <section id="GPT35example2">
+        <hr>
+        <h2>#2 GPT 3.5 - Layer 28, Neuron 596</h2>
+            
+            <div class="flex-row">
+                <div class="mx-auto">
+                    <left><p><b>Highly activating inputs:</b> </p></left>
+                    <center><img class="card-img-top" src="assets/examples/slide2.png" style="width:950px"></center>
+                    <left><p>
+                        <b>Original (2.6): </b>mentions of dates or actions taking place in the news industry.
+                        <br>
+                        <b>Summary (5.0): </b>instances of the word "been" or words related to time (e.g., after, yet) in the text excerpts.
+                        <br>
+                        <b>Highlight (4.6): </b>words related to time and sequence, such as "after" and "been".
+                        <br>
+                        <b>HS (4.4): </b>words related to temporal order or sequence, particularly "after" and "been".
+                        <br>
+                        <b>AVHS (2.0): </b>punctuation marks and conjunctions that separate or connect phrases or clauses in sentences.
+                        </p></left>
+                </div>
+            </div>
+
+    </section>
+
+    <section id="GPT35example3">
+        <hr>
+        <h2>#3 GPT 3.5 - Layer 39, Neuron 445</h2>
+            
+            <div class="flex-row">
+                <div class="mx-auto">
+                    <left><p><b>Highly activating inputs:</b> </p></left>
+                    <center><img class="card-img-top" src="assets/examples/slide3.png" style="width:950px"></center>
+                    <left><p>
+                        <b>Original (1.4): </b>text related to coding or programming, including HTML and cryptocurrency.
+                        <br>
+                        <b>Summary (4.4): </b>pronouns and words related to referring to something previously mentioned.
+                        <br>
+                        <b>Highlight (4): </b>references to pronouns and possessive determiners.
+                        <br>
+                        <b>HS (4.4): </b>pronouns used in reference to objects or entities.
+                        <br>
+                        <b>AVHS (3.6): </b>phrases or sentences that contain personal pronouns, especially 'that's who we are,' 'we're Philadelphia, we get after people,' and 'that's what we do.'
+                        </p></left>
+                </div>
+            </div>
+
+    </section>
+
+    <section id="GPT4example1">
+        <hr>
+        <h2>#1 GPT 4 - Layer 2, Neuron 1818 </h2>
+            
+            <div class="flex-row">
+                <div class="mx-auto">
+                    <left><p><b>Highly activating inputs:</b> </p></left>
+                    <center><img class="card-img-top" src="assets/examples/slide4.png" style="width:950px"></center>
+                    <left><p>
+                        <b>Original (4.2): </b>words and numbers that end with 'ck'.
+                        <br>
+                        <b>Summary (4.6): </b>elements in the text that are related to checks or checking, as well as number sequences with repeated figures.
+                        <br>
+                        <b>Highlight (2.4): </b>numeric series, coding/scripting language syntax, and U.S. historical and sport team references.
+                        <br>
+                        <b>HS (4.0): </b>parts of words that are common in language related to checks and balances, numerical sequences, and programming code.
+                        <br>
+                        <b>AVHS (5.0): </b>words related to checks, including checks as in "checks and balances" in a political context, check in programming codes, and the 'ck' pattern in other words. It also seemed to respond to some number sequences.
+                        </p></left>
+                </div>
+            </div>
+
+    </section>
+
+    <section id="GPT4example2">
+        <hr>
+        <h2>#2 GPT 4 - Layer 42, Neuron 674 </h2>
+            
+            <div class="flex-row">
+                <div class="mx-auto">
+                    <left><p><b>Highly activating inputs:</b> </p></left>
+                    <center><img class="card-img-top" src="assets/examples/slide5.png" style="width:950px"></center>
+                    <left><p>
+                        <b>Original (4.6): </b>phrases implying successful achievement or performance.
+                        <br>
+                        <b>Summary (2.6): </b>conversational phrases or idioms commonly used in spoken English.
+                        <br>
+                        <b>Highlight (3.6): </b>verbs followed by adverbs or prepositions.
+                        <br>
+                        <b>HS (4.6): </b>phrases that indicate levels of performance or effectiveness.
+                        <br>
+                        <b>AVHS (4.8): </b>phrases that indicate an evaluation or judgement.
+                        </p></left>
+                </div>
+            </div>
+
+    </section>
+
+    <section id="GPT4example3">
+        <hr>
+        <h2>#3 GPT 4 - Layer 5, Neuron 541  </h2>
+            
+            <div class="flex-row">
+                <div class="mx-auto">
+                    <left><p><b>Highly activating inputs:</b> </p></left>
+                    <center><img class="card-img-top" src="assets/examples/slide6.png" style="width:950px"></center>
+                    <left><p>
+                        <b>Original (4.2): </b>words ending in 'amy'.
+                        <br>
+                        <b>Summary(4.2): </b>words that end with the 'amy' sequence.
+                        <br>
+                        <b>Highlight(2.6): </b>adjectives related to texture.
+                        <br>
+                        <b>HS(4.6): </b>the partial word 'amy', regardless of the context.
+                        <br>
+                        <b>AVHS(4.6): </b>the token 'amy' often found at the end of words.
+                        </p></left>
+                </div>
+            </div>
+
+    </section>
+    
+    <section id="Puzzle_example1">
+        <hr>
+        <h2>#1 Puzzles (GPT-4 Explainer) - Puzzle 4  </h2>
+            
+            <div class="flex-row">
+                    <left><p>
+                        Each prompting method generated 3 explanations for each puzzle and were compared to the ground truth (the "correct" explanation). They receieved a score out of 3 based on how many explanations were correct.
+                        <br><br>
+                        <b>Ground Truth: </b>the substitution of a key word in a common idiom that isn't the usual choice for that idiom
+                        <br>
+                        <b>Original - Correct (3/3): </b>synonyms or substitutions for words typically used in idioms or common phrases.
+                        <br>
+                        <b>Summary - Correct (3/3): </b>synonyms or alternative words often used to replace more common words or phrases in idiomatic expressions.
+                        <br>
+                        <b>Highlight - Incorrect (0/3): </b>idiomatic expressions and their variations.
+                        <br>
+                        <b>HS - Correct (3/3): </b>replacements for typical idiomatic expressions. 
+                        <br>
+                        <b>AVHS - Correct (3/3): </b>literal translations of idiomatic expressions or phrases. 
+                        </p></left>
+            </div>
+
+    </section>
+    
+    <section id="Puzzle_example2">
+        <hr>
+        <h2>#2 Puzzles (GPT-4 Explainer) - Puzzle 6  </h2>
+            <div class="flex-row">
+                    <left><p>
+                        <b>Ground Truth: </b>historically inaccurate numerical years in the passage and nothing else
+                        <br>
+                        <b>Original - Incorrect (0/3): </b>numerical representations of specific years in historical events.
+                        <br>
+                        <b>Summary - Correct (3/3): </b>incorrect historical dates.
+                        <br>
+                        <b>Highlight - Incorrect (0/3): </b>numbers related to historic dates.
+                        <br>
+                        <b>HS - Correct (3/3): </b>incorrect historical dates or years.
+                        <br>
+                        <b>AVHS - Correct (2/3): </b>historical years that are inaccurately represented. 
+                        </p></left>
+            </div>
+
+    </section>
+    
+    <section id="Puzzle_example3">
+        <hr>
+        <h2>#3 Puzzles (GPT-4 Explainer) - Puzzle 11  </h2>
+            
+            <div class="flex-row">
+                    <left><p>
+                        <b>Ground Truth: </b>language related to something being stopped, prevented, or halted, but only when negated
+                        <br>
+                        <b>Original - Incorrect (0/3): </b>verbs related to cessation or stopping.
+                        <br>
+                        <b>Summary - Correct (3/3): </b>negative sentences using the verb 'stop' in the future or present tense.
+                        <br>
+                        <b>Highlight - Incorrect (0/3): </b>sentences containing the word 'stop' or variants of it.
+                        <br>
+                        <b>HS - Correct (3/3): </b>phrases involving the persistence or continuation of an action, often using the word 'stop' in negative sentences.
+                        <br>
+                        <b>AVHS - Correct (3/3): </b>statements where an action is continuing despite some resistance or difficulty, with the word "stop" used in a negation context. 
+                        </p></left>
+            </div>
+
+    </section>
+
+    <section>
+        This webpage template was recycled from <a href='https://nv-tlabs.github.io/LION/'>here</a>.
+        <center><p><a href='https://accessibility.ucsd.edu/'><b>Accessibility</b></a></p></center>
+    </section>
+    
+
+
+</div>
+</body>
+</html>

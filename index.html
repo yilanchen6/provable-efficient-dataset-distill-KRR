@@ -506,7 +506,7 @@ pre {
             </p>
         </div>
     </section>
-    <section id="Overview">
+    <!-- <section id="Overview">
         <div class="mx-auto">
             <center><img class="card-img-top" src="assets/overview.gif" style="max-width: none;"></center>
             <center>
@@ -515,10 +515,10 @@ pre {
                 </p>
             </center>
         </div>
-    </section>
-    <section id="What is Conformal Prediction (CP)">
+    </section> -->
+    <section id="What is Dataset Distillation">
         <hr>
-        <h2>What is Conformal Prediction (CP)</h2>
+        <h2>What is Dataset Distillation</h2>
             
             <div class="mx-auto">
                 <center><img class="card-img-top" src="assets/data_distill.png"></center>
@@ -528,29 +528,17 @@ pre {
             <div class="flex-row">
                 <div class="mx-auto">
                     <p class="maintext">
-                        Conformal prediction has been a powerful tool to quantify
-                    prediction uncertainties of modern machine learning models. For
-                    classification tasks, given a test input \(x_{n+1}\), it could generate
-                    a prediction set \(C(x_{n+1})\) with coverage guarantee:
-                    $$
-                    \mathbb P [y_{n+1} \in C(x_{n+1})] \geq 1-\alpha.
-                    $$
+                    Given an Original dataset: $(𝐗, 𝐘) \in \mathbb{R}^{d \times d} \times \mathbb{R}^{k \times n}$, dataset distillation aims to distill a large dataset 
+                    into a small synthesized dataset such that models trained 
+                    on it can achieve similar performance to those trained on the original dataset.
                     </p>
-                    <p class="maintext">
-                        In conformal prediction, usually a (non)-conformity score function  \(S(x, y)\) is defined, which measures
-                        how label \(y\) conforms to input \(x\). The prediction set is constructed as:
-                        $$
-                            C(x) = \{y \mid S(x, y) \leq \tau \},
-                        $$
-                        where \(\tau\) is a threshold computed on a seperate calibration set, according to the target coverage
-                        level \(1-\alpha\).
-                    </p>
+                    
                 </div>
             </div>
     </section>
-    <section  id="Adversarial robustness of conformal prediction">
+    <section  id=" Dataset Distillation for Kernel Ridge Regression (KRR)">
         <hr>
-        <h2>Adversarial robustness of conformal prediction</h2>
+        <h2> Dataset Distillation for Kernel Ridge Regression (KRR)</h2>
         <p class="maintext">
         Under adversarial attack, the coverage guarantee no longer hold.
         To rebuild the coverage guarantee, RSCP<a href="#Ref2">[2]</a> is proposed to provide adversarially robust conformal prediction.

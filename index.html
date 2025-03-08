@@ -537,6 +537,7 @@ pre {
                 </div>
             </div>
     </section>
+
     <section  id=" Dataset Distillation for Kernel Ridge Regression (KRR)">
         <hr>
         <h2> Dataset Distillation for Kernel Ridge Regression (KRR)</h2>
@@ -565,34 +566,41 @@ pre {
     <section>
         <hr>
         <h2>Dataset Distillation for Linear Ridge Regression (LRR)</h2>
-        For a LRR model, we show that \(k\) distilled data points (one per class) are necessary and 
-        sufficient to guarantee \(W_S = W\). We provide analytical solutions of such \((X_S, Y_S)\) allowing us to
-        compute the distilled dataset analytically instead of having to learn it heuristically in existing works
-
+        <p class="maintext">    
+            For a LRR model, we show that \(k\) distilled data points (one per class) are necessary and 
+            sufficient to guarantee \(W_S = W\). We provide analytical solutions of such \((X_S, Y_S)\) allowing us to
+            compute the distilled dataset analytically instead of having to learn it heuristically in existing works.<br>
+        </p>
         <div class="mx-auto">
             <center><img class="card-img-top" src="assets/dd_linear.png"></center>
-            <center><p class="caption">Analytical Computation for Linear Ridge Regression.</p></center>
+            <!-- <center><p class="caption">Analytical Computation for Linear Ridge Regression.</p></center> -->
         </div>
-        Intuitively, original dataset \((X, Y)\) is compressed into \((X_S, Y_S)\) through original model’s parameter \(W\).
-        <ul>    
-            <li>When \(m=k\), only one solution. When \(𝜆_𝑆=0, X_S=(Y_S^+ W)^+ \).
-            <li>When \(m>k\), infinitely many distilled datasets since \(Z\) is a free variable to choose
-            <li>When \(m=n\), \((X, Y)\) is a distilled dataset for itself.
-            <li>When \(m>n\), can generate more data than original dataset.
-        </ul>
+        <br>
 
-        Below is an illustration of distilled data of MNIST and CIFAR-100 when \(m=k\).
+        <p class="maintext">
+            Intuitively, original dataset \((X, Y)\) is compressed into \((X_S, Y_S)\) through original model’s parameter \(W\).
+            <ul>    
+                <li>When \(m=k\), only one solution. When \(𝜆_𝑆=0, X_S=(Y_S^+ W)^+ \).
+                <li>When \(m>k\), infinitely many distilled datasets since \(Z\) is a free variable to choose
+                <li>When \(m=n\), \((X, Y)\) is a distilled dataset for itself.
+                <li>When \(m>n\), can generate more data than original dataset.
+            </ul>
+            
+            Below is an illustration of distilled data of MNIST and CIFAR-100 when \(m=k\).
+        </p>
         <div class="mx-auto">
             <center><img class="card-img-top" src="assets/dd_one_data_per_class.png"></center>
             <!-- <center><p class="caption">Distilled data of MNIST (first row) and CIFAR-100 (second row) for LRR when \(m=k\).</p></center> -->
         </div>
 
+        <p class="maintext">    
         Besides, we can also 
-        
-        <ul>    
-            <li>Find realistic distilled data that is close to original data by solving closed-from solution
-            <li>Generate distilled data  from random noise
-        </ul>
+        <ol>    
+            <li>Find realistic distilled data that is close to original data by solving closed-from solution.
+            <li>Generate distilled data  from random noise.
+        </ol>
+        Below is an illustration.
+        </p>
         <div class="mx-auto">
             <center><img class="card-img-top" src="assets/dd_real.png"></center>
             <!-- <center><p class="caption">Initialized data (first row), distilled data generated from real images using techniques in -->

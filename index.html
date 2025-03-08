@@ -541,7 +541,7 @@ pre {
         <hr>
         <h2> Dataset Distillation for Kernel Ridge Regression (KRR)</h2>
         <p class="maintext">
-        A Kernel ridge regression is \(f(x) = W \phi(x)\), where \(\phi: \mathbb{R}^{d} \mapto \mathbb{R}^{d}\) and \(W \in \mathbb{R}^{k \times p}\), 
+        A Kernel ridge regression is \(f(x) = W \phi(x)\), where \(\phi: \mathbb{R}^{d} \mapsto \mathbb{R}^{d}\) and \(W \in \mathbb{R}^{k \times p}\), 
         that minimize the following loss:
         $$\min_{W} \|Y - W \phi(X)\|_F^2 + \lambda \|W\|^2$$
         where \(\lambda\) is the regularization parameter.
@@ -571,47 +571,35 @@ pre {
 
         <div class="mx-auto">
             <center><img class="card-img-top" src="assets/dd_linear.png"></center>
-            <center><p class="caption"> Analytical Computation for Linear Ridge Regression.</p></center>
+            <center><p class="caption">Analytical Computation for Linear Ridge Regression.</p></center>
         </div>
         Intuitively, original dataset \((X, Y)\) is compressed into \((X_S, Y_S)\) through original model’s parameter \(W\).
         <ul>    
-            <li>When \(m=k\), only one solution. When \(𝜆_𝑆=0, 𝐗_𝐒=(𝐘_𝐒^+ 𝐖)^+ \).
+            <li>When \(m=k\), only one solution. When \(𝜆_𝑆=0, X_S=(Y_S^+ W)^+ \).
             <li>When \(m>k\), infinitely many distilled datasets since \(Z\) is a free variable to choose
             <li>When \(m=n\), \((X, Y)\) is a distilled dataset for itself.
             <li>When \(m>n\), can generate more data than original dataset.
         </ul>
 
-        <p class="maintext">
-            To address the technique flaw in RSCP, we proposed RSCP+, a novel framework to provide guaranteed 
-            robustness for conformal prediction. The key idea is utilizing the Monte-Carlo estimator directly as the 
-            conformity score in conformal prediction, and bound the score of perturbed examples. To be more specific, the bound contains three parts:
-            <ol class="maintext">
-                <li>Bound between \(S_{\text{RS}}\) of perturbed input and original input. This bound is guaranteed by randomized smoothing.</li>
-                <li>Error from Monte Carlo approximation of perturbed input score, bounded by Hoeffding's inequality. </li>
-                <li>Error from Monte Carlo approximation of clean input score, bounded by Hoeffding's inequality. </li>
-            </ol>
-        </p>
-        <p class="maintext">
-            With this bound, we could provide guaranteed robustness with our RSCP+. <br>
-            <b>RSCP+ algorithm</b><br>
-            <b>Input:</b> Input image \(x_{n+1}\), calibration set \(D_{cal}\), target coverage level \(1 - \alpha, \epsilon, \sigma, \beta\). <br>
-            <b>Output:</b> Guaranteed robust prediction set \(C_\epsilon^+\).<br>
-            <ol class="maintext">
-                <li>Calculate calibration scores with randomized smoothing \(\{\hat{S}_{\text{RS}}(x, y)\}_{(x, y) \in D_{\text{cal}}}\).\(\hat{S}_{\text{RS}}(x, y) =\frac{1}{N_{\text{MC}}} 
-                    \sum_{i=1}^{N_{\text{MC}}} S(x + \delta_i, y), \delta_i \sim \mathcal{N}(0, \sigma^2 I_p)\) is the Monte Carlo approximation of \(S_{\text{RS}}\).</li>  
-                <li>Calculate threshold \(\tau_{\text{MC}}\) as \(\frac{1 - \alpha - 2\beta}{1 + 1 / |D_{\text{cal}}|}\) empirical quantile of  calibration scores.</li>
-                <li>Calculate test conformity score for each class with randomized smoothing \({\hat{S}_{\text{RS}}(\tilde{x}_{n+1}, k)}_{k=1}^K\).</li>
-                <li>Calculate prediction set \(C_\epsilon^+\) with Eq. (17) in the paper.</li>
-            </ol>
-        </p>
-        <!-- <div class="mx-auto">
-            <center><img class="card-img-top" src="assets/proof_diagram_v8.png"></center>
-            <center>
-                <p class="caption">
-                    Diagram showing the main idea of RSCP+.
-                </p>
-            </center>
-        </div> -->
+        Below is an illustration of distilled data of MNIST and CIFAR-100 when \(m=k\).
+        <div class="mx-auto">
+            <center><img class="card-img-top" src="assets/dd_one_data_per_class.png"></center>
+            <center><p class="caption">Distilled data of MNIST (first row) and CIFAR-100 (second row) for LRR when \(m=k\).</p></center>
+        </div>
+
+        Besides, we can also 
+        
+        <ul>    
+            <li>Find realistic distilled data that is close to original data by solving closed-from solution
+            <li>Generate distilled data  from random noise
+        </ul>
+        <div class="mx-auto">
+            <center><img class="card-img-top" src="assets/dd_one_data_per_class.png"></center>
+            <center><p class="caption">Initialized data (first row), distilled data generated from real images using techniques in
+                Sec 4.2 (second row), and distilled data generated from random noise using techniques in Sec 4.1
+                (third row) for a LRR with m = 500 on MNIST and CIFAR-100. IPC: images per clas.</p></center>
+        </div>
+
     </section>
     <section>
         <hr>

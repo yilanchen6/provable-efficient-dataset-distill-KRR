@@ -503,7 +503,12 @@ pre {
                         previous work such as KIP while being significantly more efficient, e.g. 15840×
                         faster on CIFAR-100.</li>
                   </ul>
+            Below is a comparison with existing theoretical analysis of dataset distillation. 
             </p>
+        </div>
+        <div class="mx-auto">
+            <center><img class="card-img-top" src="assets/compare.png"></center>
+            <!-- <center><p class="caption">An illustration of dataset distillation from <a href="#Ref1">[1]</a></p></center> -->
         </div>
     </section>
     <!-- <section id="Overview">
@@ -572,7 +577,7 @@ pre {
             compute the distilled dataset analytically instead of having to learn it heuristically in existing works.<br>
         </p>
         <div class="mx-auto">
-            <center><img class="card-img-top" src="assets/dd_linear.png"></center>
+            <center><img class="card-img-top" style="max-width: 90%;height: auto;" src="assets/dd_linear.png"></center>
             <!-- <center><p class="caption">Analytical Computation for Linear Ridge Regression.</p></center> -->
         </div>
         <br>
@@ -589,7 +594,7 @@ pre {
             Below is an illustration of distilled data of MNIST and CIFAR-100 when \(m=k\).
         </p>
         <div class="mx-auto">
-            <center><img class="card-img-top" src="assets/dd_one_data_per_class.png"></center>
+            <center><img class="card-img-top" style="max-width: 90%;height: auto;" src="assets/dd_one_data_per_class.png"></center>
             <!-- <center><p class="caption">Distilled data of MNIST (first row) and CIFAR-100 (second row) for LRR when \(m=k\).</p></center> -->
         </div>
 
@@ -602,7 +607,7 @@ pre {
         Below is an illustration.
         </p>
         <div class="mx-auto">
-            <center><img class="card-img-top" src="assets/dd_real.png"></center>
+            <center><img class="card-img-top" style="max-width: 90%;height: auto;" src="assets/dd_real.png"></center>
             <!-- <center><p class="caption">Initialized data (first row), distilled data generated from real images using techniques in -->
                 <!-- Sec 4.2 (second row), and distilled data generated from random noise using techniques in Sec 4.1
                 (third row) for a LRR with m = 500 on MNIST and CIFAR-100. IPC: images per clas.</p></center> -->
@@ -612,66 +617,45 @@ pre {
     <section>
         <hr>
         <h2>Kernel Ridge Regression (KRR)</h2>
-        <p class="maintext">
-            The results of LRR can be extended to KRR by replacing \(X_S\) with \(\phi(X_S) \).
-            When \(\phi\) is surjective or bijective, we can always find a \(X_S\) for a desired \(\phi(X_S) \).
+            <h3 style="font-size:x-large;">Surjective Feature Mapping</h3>
+            <p class="maintext">
+                The results of LRR can be extended to KRR by replacing \(X_S\) with \(\phi(X_S) \).
+                When \(\phi\) is surjective or bijective, we can always find a \(X_S\) for a desired \(\phi(X_S) \).
+
+                Examples of surjective \(\phi: p \leq d\):
+                <ol>    
+                    <li>Invertible NNs
+                    <li>Fully-connected NN (FCNN)
+                    <li>Convolutional Neural Network (CNN)
+                    <li>Random Fourier Features (RFF)
+                </ol>
+            
+
+            <h3 style="font-size:x-large;">Non-surjective Feature Mapping</h3>
+            <p class="maintext">
+            For non-surjective 𝜙 such as deep nonlinear NNs, one data per class is generally not sufficient as long as \((Y_S^+ W)^+\) is not in the range space of \(\phi\).
+            For deep linear NNs, we show \(m=k+1\) can be sufficient under certain conditions.
+            </p>
+            
+            
+            
+
+
         </p>
-        <div style="margin-left: 30px;">
-            <h3 style="font-size:x-large;">Method 1: Post-Training Transformation (PTT)</h3>
-            <p class="maintext">
-            PTT consists of two transformations on the base conformity score: (1) ranking transformation and (2) sigmoid transformation.
-            <br>
-            <b>Ranking transformation. </b> The ranking transformation utilizes a hold out set:
-            $$
-                \mathcal{Q}_{\text{rank}}(s) = \frac{r\left[s; \{S(x, y)\}_{(x, y) \in D_{holdout}}\right]}{|D_{\text{holdout}}|}.
-            $$
-            </p>
-            <p class="maintext"><b>Sigmoid transformation. </b> In this step, a sigmoid function \(\phi\) is applied on \(S\):
-                $$
-                \mathcal{Q}_{\text{sig}}(s) = \phi\left[(s - b) / T\right],
-                $$
-                where \(b, T\) are hyper-parameters controlling this transformation.
-            </p>
-            <h3 style="font-size:x-large;">Method 2: Robust Conformal Training (RCT)</h3>
-            <p class="maintext">
-                Besides PTT which is a post-training method, we propose a novel training pipeline called Robust Conformal Training (RCT).
-                The key idea is to simulate the conformal prediction procedure during trainig.
-                The training pipeline is shown in the figure below. The training objective is defined as:
-                $$
-                L(x, y_{\text{gt}}) = L_{\text{class}}(c(x, y; \tau^{\text{soft}}), y_{\text{gt}}) + \lambda L_{\text{size}}(c(x, y; \tau^{\text{soft}})),
-                $$
-                where the classification loss
-                $$
-                L_{\text{class}}(c(x, y; \tau^{\text{soft}}), y_{\text{gt}}) = 1 - c(x, y_{\text{gt}}; \tau^{\text{soft}}),
-                $$
-                and the size loss
-                $$
-                L_{\text{size}}(c(x, y; \tau^{\text{soft}}))  = \max(0, \sum_{y=1}^K c(x, y;\tau^{\text{soft}}) - \kappa).
-                $$
-            </p>
-            <div class="mx-auto">
-                <center><img class="card-img-top" src="assets/RCT_pipeline_v12.PNG"></center>
-                <center><p class="caption">Training pipeline of RCT.</p></center>
-            </div>
-        </div>
     </section>
+
+
     <section>
         <hr>
-        <h2>Results</h2>
+        <h2>Experiments</h2>
         <p class="maintext">
-            The tables below show the average size of prediction sets over three vision datasets. 
-            The baseline method gives trivial prediction sets (predict full label set) when trying to provide guaranteed robustness.
-            With our methods, we provide the first meaningful, provably robust conformal prediction,
-            with boosted efficiency by up to <b>4.36×, 5.46×, and 16.9×</b> on CIFAR10, CIFAR100 and ImageNet, respectively.
+            For surjective 𝜙, our algorithm outperforms previous work such as KIP<a href="#Ref2">[2]</a> while being significantly more efficient
         </p>
         <div class="mx-auto">
-            <center><img class="card-img-top" style="max-width: 90%;height: auto;" src="assets/result1.png"></center>
-            <center><p class="caption">Average size of prediction sets on CIFAR10 & CIFAR100</p></center>
+            <center><img class="card-img-top" style="max-width: 90%;height: auto;" src="assets/dd_experiment.png"></center>
+            <!-- <center><p class="caption">Average size of prediction sets on CIFAR10 & CIFAR100</p></center> -->
         </div>
-        <div class="mx-auto">
-            <center><img class="card-img-top" style="max-width: 70%;height: auto;" src="assets/result2.png"></center>
-            <center><p class="caption">Average size of prediction sets on ImageNet</p></center>
-        </div>
+        
     </section>
     <section>
         <hr>
@@ -681,13 +665,9 @@ pre {
         <a id="Ref1" href="https://arxiv.org/pdf/1811.10959">"Dataset Distillation."</a>
         2020.
         <br>
-        [2] Gendler, Asaf, Tsui-Wei Weng, Luca Daniel, and Yaniv Romano.
-        <a id="Ref2" href="https://openreview.net/forum?id=9L1BsI4wP1H">"Adversarially robust conformal prediction."</a>
-        In International Conference on Learning Representations. 2021.
-        <br>
-        [3] Cohen, Jeremy, Elan Rosenfeld, and Zico Kolter.
-        <a id="Ref3" href="https://proceedings.mlr.press/v97/cohen19c.html">"Certified adversarial robustness via randomized smoothing."</a>
-        In international conference on machine learning, pp. 1310-1320. PMLR, 2019.</p>
+        [2] Timothy Nguyen, Roman Novak, Lechao Xiao, and Jaehoon Lee.
+        <a id="Ref2" href="https://arxiv.org/pdf/2107.13034">"Dataset distillation with infinitely wide convolutional networks."</a>
+        Advances in Neural Information Processing Systems. 2021.
     </section>
     <section class="maintext">
         <hr>

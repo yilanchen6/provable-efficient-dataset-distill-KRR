@@ -1,1 +1,1 @@
-# Provable and Efficient Dataset Distillation for Kernel Ridge Regressioncy
+# Provable and Efficient Dataset Distillation for Kernel Ridge Regression

@@ -540,42 +540,26 @@ pre {
         <hr>
         <h2> Dataset Distillation for Kernel Ridge Regression (KRR)</h2>
         <p class="maintext">
-        A Kernel ridge regression is $f(x)= W \phi(x), where \phi: \mathbb{R}^{d} \rightarrow \mathbb{R}^{d} and W \in \mathbb{R}^{k \times p}$, that minimize the following loss:
-        $$\min_{W} \||Y - W \phi(X)\||^2 + \lambda \|W\|^2$$
+        A Kernel ridge regression is $f(x)= W \phi(x)$, where $\phi: \mathbb{R}^{d} \mapto \mathbb{R}^{d} and W \in \mathbb{R}^{k \times p}$, that minimize the following loss:
+        $$\min_{W} \|Y - W \phi(X)\|_F^2 + \lambda \|W\|^2$$
         where $\lambda$ is the regularization parameter.
         <br>
         The solution can be computed analytically as $W = Y \phi_{\lambda}(X)^+$, where 
         $$\phi_{\lambda}(X)^+ = (\phi(X)^T \phi(X) + \lambda I)^{-1} \phi(X),  $$.
         $$\phi_{\lambda}(X)^+ = \left\{  
             \begin{array}{ll}  
-            \parenth{K(X, X) + \lambda I_n}^{-1} \phi(X)^\top = \phi(X)^\top \parenth{\phi(X) \phi(X)^\top + \lambda I_p}^{-1}, &\text{if  $\lambda >0$, }  \\  
+            (K(X, X) + \lambda I_n)^{-1} \phi(X)^\top = \phi(X)^\top (\phi(X) \phi(X)^\top + \lambda I_p)^{-1}, &\text{if  $\lambda >0$, }  \\  
             \phi(X)^+, &\text{if  $\lambda =0$.}
             \end{array}  \right. $$ 
-        and $K(X, X) = \phi(X)^\top \phi(X) \in \Reals^{n \times n}$. $\phi_{\lambda}(X)$ can be considered as regularized features.
+        and $K(X, X) = \phi(X)^\top \phi(X) \in \mathbb{R}^{n \times n}$. $\phi_{\lambda}(X)$ can be considered as regularized features.
         Linear ridge regression is a special case of kernel ridge regression (KRR) with $\phi(X) = X$. 
-
-
-        $$
-        \tilde S(x, y) = \Phi^{-1}[S_{\text{RS}}(x, y)] = \Phi^{-1}[\mathbb E_{\delta \sim \mathcal N(0, \sigma^2I)}S(x + \delta, y)],
-        $$
-        where \(\Phi\) denotes Gaussian cdf. The randomized smoothed score \(\tilde S(x, y)\) is Lipschitz continuous with constant
-        \(1/\sigma\), hence the score of adversarially perturbed example could be bound:
-        $$
-        \tilde S(\tilde x, y) \leq \tilde S(x, y) + \frac{\epsilon}{\sigma},
-        $$
-        where \(\tilde x\) is the perturbed example that \(\|\tilde x - x\|_2 \leq \epsilon\).
+        <br>
+        Similarly, a KRR trained on distilled dataset with regularization $\lambda_S \geq 0$ is $f_S(x) = W_S \phi(x)$,
+        <br>
+        Goal of dataset distillation: find $(X_S, Y_S)$ such that $W_S = W$. 
+        
         </p>
-        <p class="maintext">
-        However, RSCP still faces two challenges:<br><br>
-        <b>Challenge 1: The robustness guarantee of RSCP is flawed.</b> RSCP
-        introduces randomized smoothing to provide robustness guarantee. Unfortunately, the derived
-        guarantee is invalid when Monte Carlo sampling is used for randomized smoothing, which is how
-        randomized smoothing is implemented in practice <a href="#Ref3">[3]</a>. Therefore, their robustness
-        certification is invalid, despite empirically working well.
-        <br> <br>
-        <b>Challenge 2: RSCP has low efficiency.</b> The average
-        size of prediction sets of RSCP is much larger than the vanilla conformal prediction.
-        </p>
+
     </section>
     <section>
         <hr>

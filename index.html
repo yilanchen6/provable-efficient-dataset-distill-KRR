@@ -564,7 +564,23 @@ pre {
     </section>
     <section>
         <hr>
-        <h2>Address challenge 1: RSCP+ framework</h2>
+        <h2>Dataset Distillation for Linear Ridge Regression (LRR)</h2>
+        For a LRR model, we show that \(k\) distilled data points (one per class) are necessary and 
+        sufficient to guarantee \(W_S = W\). We provide analytical solutions of such \((X_S, Y_S)\) allowing us to
+        compute the distilled dataset analytically instead of having to learn it heuristically in existing works
+
+        <div class="mx-auto">
+            <center><img class="card-img-top" src="assets/dd_linear.png"></center>
+            <center><p class="caption"> Analytical Computation for Linear Ridge Regression.</p></center>
+        </div>
+        Intuitively, original dataset \((X, Y)\) is compressed into \((X_S, Y_S)\) through original model’s parameter \(W\).
+        <ul>    
+            <li>When \(m=k\), only one solution. When \(𝜆_𝑆=0, 𝐗_𝐒=(𝐘_𝐒^+ 𝐖)^+ \).
+            <li>When \(m>k\), infinitely many distilled datasets since \(Z\) is a free variable to choose
+            <li>When \(m=n\), \((X, Y)\) is a distilled dataset for itself.
+            <li>When \(m>n\), can generate more data than original dataset.
+        </ul>
+
         <p class="maintext">
             To address the technique flaw in RSCP, we proposed RSCP+, a novel framework to provide guaranteed 
             robustness for conformal prediction. The key idea is utilizing the Monte-Carlo estimator directly as the 
